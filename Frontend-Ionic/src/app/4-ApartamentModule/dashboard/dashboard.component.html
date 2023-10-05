@@ -1,0 +1,30 @@
+<ion-header id="main-content" [translucent]="true">
+  <ion-segment class="create-header" mode="md" swipGesture="true">
+    <ion-segment-button (click)="deleteButton()" class="delete">
+      <ion-icon name="trash"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button [disabled]="apartService.step!=4 || apartService.createMode == 'old'" class="save" (click)="saveAlert()">
+      <ion-icon name="save"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-toolbar color="none">
+  <ion-title *ngIf="apartService.step!=4">STEP 0{{apartService.step}}</ion-title>
+  <ion-title *ngIf="apartService.step==4">REVISIONE</ion-title>
+</ion-toolbar>
+<ion-content class="ion-padding">
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
+<ion-footer>
+  <ion-segment class="create-footer" value="favorite" mode="md" swipGesture="true">
+    <ion-segment-button [disabled] = "apartService.step==1" (click)="stepBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button *ngIf="apartService.step!=4" (click)="stepForward()">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button *ngIf="apartService.step==4" (click)="checkData()">
+      <ion-icon name="cloud-upload"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-footer>

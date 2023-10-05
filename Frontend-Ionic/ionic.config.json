@@ -1,0 +1,7 @@
+{
+  "name": "ProgettoCasaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

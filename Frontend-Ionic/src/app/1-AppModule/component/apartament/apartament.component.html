@@ -1,0 +1,67 @@
+<ion-content *ngIf="apartament">
+  <ion-card>
+    <ion-card-header style="text-align:center">
+      <ion-card-title>{{apartament.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-img *ngIf="images.length==0" class="image" src="assets/nopics.png"></ion-img>
+    <swiper *ngIf="images.lenght!=0" [pagination]="true" class="mySwiper" id="swiper-container">
+        <ng-template *ngFor = "let image of this.images, let i = index" swiperSlide>
+            <ion-list>
+              <ion-img class="image" [src]="image.data"></ion-img>
+              <p>{{image.name}}</p>
+            </ion-list>
+          </ng-template>
+      </swiper>
+      <ion-list>
+        <h1 lines="none" style="font-weight: bolder;padding-left: 10px;">{{this.apartament.price | number:'1.2-2'}} €</h1>
+        <ion-item-divider lines="none" ion-no-padding>
+          <ion-title style="text-align: center">DESCRIZIONE</ion-title>
+        </ion-item-divider>
+        <ion-card-content>
+          <ion-textarea style="text-align: justify;"value="{{apartament.description}}" autoGrow="true" readonly="true"></ion-textarea>
+        </ion-card-content>
+        <ion-item-divider lines="non" ion-no-padding>
+          <ion-title style="text-align: center">CARATTERISTICHE</ion-title>
+        </ion-item-divider>
+        <ion-card-content>
+            <ion-list>
+              <ion-label>Codice di Riferimento</ion-label>
+              <ion-item  lines="full">{{this.apartament.agent+this.apartament.id}}</ion-item>
+              <ion-label>Data Annuncio</ion-label>
+              <ion-item  lines="full">{{this.apartament.created_at | date:'dd/MM/yyyy'}}</ion-item>
+              <ion-label>Posizione</ion-label>
+              <ion-item  lines="full">{{this.apartament.city}} - {{this.apartament.macro}} - {{this.apartament.micro}}</ion-item>
+              <ion-label>Anno di Costruzione</ion-label>
+              <ion-item  lines="full">{{this.apartament.year}}</ion-item>
+              <ion-label>Superficie Calpestabile</ion-label>
+              <ion-item  lines="full">{{this.apartament.surface}} m<sup>2</sup></ion-item>
+              <ion-label>Tipologia</ion-label>
+              <ion-item  lines="full">{{this.apartament.type}}</ion-item>
+              <ion-label>Piano</ion-label>
+              <ion-item  lines="full">{{this.apartament.floor}}</ion-item>
+              <ion-label>Di Piani Totali</ion-label>
+              <ion-item  lines="full">{{this.apartament.floors}}</ion-item>
+              <ion-label>Appartamenti Totali</ion-label>
+              <ion-item  lines="full">{{this.apartament.apartaments}}</ion-item>
+              <ion-label>Numero Locali</ion-label>
+              <ion-item  lines="full">{{this.apartament.locals}} (di cui: {{this.apartament.bathrooms}} Bagni e {{this.apartament.bedrooms}} Camere)</ion-item>
+              <ion-label>Balcone</ion-label>
+              <ion-item  lines="full">{{(this.apartament.balcony)?'SI':'NO'}}</ion-item>
+              <ion-label>Terrazzo</ion-label>
+              <ion-item  lines="full">{{(this.apartament.terrace)?'SI':'NO'}}</ion-item>
+              <ion-label>Giardino</ion-label>
+              <ion-item  lines="full">{{(this.apartament.garden)?'SI':'NO'}}</ion-item>
+              <ion-label>Garage</ion-label>
+              <ion-item  lines="full">{{(this.apartament.garage)?'SI':'NO'}}</ion-item>
+              <ion-label>Posti Auto</ion-label>
+              <ion-item  lines="full">{{(this.apartament.parking)?'SI':'NO'}}</ion-item>
+              <ion-label>Cantina</ion-label>
+              <ion-item  lines="full">{{(this.apartament.cellar)?'SI':'NO'}}</ion-item>
+              <ion-label>Spese Condominiali</ion-label>
+              <ion-item  lines="full">{{this.apartament.fees | number:'1.2-2'}} €</ion-item>
+            </ion-list>
+            
+          </ion-card-content>
+      </ion-list>
+  </ion-card>
+</ion-content>

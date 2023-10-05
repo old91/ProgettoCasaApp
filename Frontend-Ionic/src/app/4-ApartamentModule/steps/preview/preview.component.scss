@@ -1,0 +1,19 @@
+.image{
+    height: 258px;
+    width: 345px ;
+}
+
+@import "~swiper/css";
+@import "~swiper/css/pagination";
+
+.swiper-pagination{
+  top: 256px;
+}
+p{
+  font-size: small;
+  margin: 15 0 10 0;
+}
+.swiper{
+  --bullet-background-active: rgb(184, 30, 30);
+  --bullet-background: black;
+}

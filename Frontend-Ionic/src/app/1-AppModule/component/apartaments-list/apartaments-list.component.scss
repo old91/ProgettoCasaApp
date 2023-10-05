@@ -1,0 +1,59 @@
+.image{
+    height: 240px;
+    // width: 100%;
+    // height: 240px;
+    width: 360px ;
+}
+.title{
+    color: black;
+    text-align: center !important;
+    font-weight: bold;
+}
+.price{
+    font-size:x-large !important;
+    font-weight: bolder;
+}
+ion-content{
+    --background: #f0f0f0;
+}
+.element{
+    border: 10px !important
+}
+ion-select{
+    max-width: 100% !important;
+}
+.apply-filter{
+    --background: black;
+    --color: rgb(184,30,30);
+    font-weight: bolder;
+    --background-activated: #1c1c1c;
+}
+.modal-title{
+    text-align: center;
+    font-weight: bolder;
+}
+ion-fab-button{
+    --background: rgb(184, 30, 30);
+    --color: white;
+}
+#primary{
+    color: rgb(184,30,30);
+}
+.icon-fav{
+    color: red
+}
+
+.no-apartaments{
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -125px;
+    margin-top: -80px;
+    ion-label{
+        font-weight: bold;
+    }
+}
+
+@import "~swiper/css";
+@import "~swiper/css/pagination";
+

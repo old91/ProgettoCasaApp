@@ -1,0 +1,26 @@
+ion-card-title{
+    text-align: center;
+    font-weight: bold;
+}
+ion-item{
+    padding-bottom: 15px;
+}
+ion-button{
+    --background: rgb(184, 30, 30);
+    --color: #1c1c1c;
+    font-weight: bold;
+}
+
+.controll-false{
+    color:rgb(184, 30, 30);
+    font-weight: bold;
+}
+
+.controll-true{
+    color: #32CD32;
+    font-weight: bold;
+}
+
+.ion-valid{
+    --border-color: green !important;
+}

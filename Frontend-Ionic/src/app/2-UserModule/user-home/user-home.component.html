@@ -1,0 +1,48 @@
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="black"> Informazioni Personali</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row *ngFor = "let p of infoUser; let i = index">
+          <ion-col class="title">
+            <ion-item class="title">
+              {{p.title}}
+            </ion-item>
+          </ion-col>
+          <ion-col class="value">
+            <ion-item class="value">
+              {{p.value}}        
+            </ion-item>
+          </ion-col>
+        </ion-row> 
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> Informazioni Contatto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row *ngFor = "let p of contactUser; let i = index">
+          <ion-col class="title">
+            <ion-item class="title">
+              {{p.title}}
+            </ion-item>
+          </ion-col>
+          <ion-col class="value">
+            <ion-item class="value">
+              {{p.value}}        
+            </ion-item>
+          </ion-col>
+        </ion-row> 
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-button expand="block" [routerLink]="['../change/email']">Modifica Email</ion-button>
+<ion-button expand="block" [routerLink]="['../change/password']">Modifica Password</ion-button>
+<ion-button expand="block" [routerLink]="['../change/device']">Gestisci Device</ion-button>

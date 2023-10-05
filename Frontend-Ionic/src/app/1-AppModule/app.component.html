@@ -1,0 +1,17 @@
+<ion-app *ngIf="dataComplete">
+  <app-header></app-header>
+  <ion-content class="ion-padding">
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+  <app-footer></app-footer>
+</ion-app>
+<ion-app *ngIf="!dataComplete">
+  <ion-content id="preload">
+    <div>
+      <ion-img class="logo" src="assets/logo.png" alt="image"></ion-img>
+      <div class="spin">
+        <ion-spinner color="danger" name="circles"></ion-spinner>
+      </div>
+    </div>
+  </ion-content>
+</ion-app>

@@ -1,0 +1,211 @@
+<ion-content class="ion-padding">
+  <form [formGroup]="step1Form">
+    <ion-list>
+      <!--ACQUISIZIONE-->
+      <ion-button size="large" expand="block" (click)="buttonClick(1)">
+        <ion-toolbar color="primary">
+          <ion-icon slot="start" [name]="(button==1)?'caret-down':'caret-forward'"></ion-icon>
+          <ion-title>ACQUISIZIONE</ion-title>
+        </ion-toolbar>
+      </ion-button>
+      <ion-list *ngIf="button==1">
+        <!--title-->
+        <ion-item>
+          <ion-label position="floating">Titolo</ion-label>
+          <ion-input formControlName="title" type="text"></ion-input>
+        </ion-item>
+        <!--agent-->
+        <ion-item lines="none">Acquisitore</ion-item>
+        <ion-item>
+          <ion-select formControlName="agent" required interface="action-sheet">
+            <ion-select-option value="0">Nessun Acquisitore</ion-select-option>
+            <ion-select-option *ngFor = "let v of vendors" value="{{v.ref_user}}">{{v.name}} {{v.surname}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--Date-->
+        <ion-item lines="none">Data di Acquisizione</ion-item>
+          <ion-item>
+            <ion-datetime formControlName="date" mode="ios" max={{todayISODate}} presentation="date"></ion-datetime>
+          </ion-item>
+      </ion-list>
+      <!--GEOGRAFIA-->
+      <ion-button size="large" expand="block" (click)="buttonClick(2)">
+        <ion-toolbar color="primary">
+          <ion-icon slot="start" [name]="(button==2)?'caret-down':'caret-forward'"></ion-icon>
+          <ion-title>GEOGRAFIA</ion-title>
+        </ion-toolbar>
+      </ion-button>
+      <ion-list *ngIf="button==2">
+        <!--comune-->
+        <ion-item>
+          <ion-label position="stacked">Comune</ion-label>
+          <ion-select formControlName="city" interface="action-sheet">
+            <ion-select-option *ngFor="let t of cityArray">{{t}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--macro-->
+        <ion-item>
+          <ion-label position="stacked">Macro Zona</ion-label>
+          <ion-select formControlName="macro" interface="action-sheet">
+            <ion-select-option *ngFor="let t of macroArray">{{t}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--micro-->
+        <ion-item>
+          <ion-label position="stacked">Micro Zona</ion-label>
+          <ion-select formControlName="micro" interface="action-sheet">
+            <ion-select-option *ngFor="let t of microArray">{{t}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--mappa-->
+        <ion-item>
+          <ion-label>MAPPA<ion-label color="danger">(non ancora disponibile)</ion-label></ion-label>
+        </ion-item>
+      </ion-list>
+      <!--IMMOBILE-->
+      <ion-button size="large" expand="block" (click)="buttonClick(3)">
+        <ion-toolbar color="primary">
+          <ion-icon slot="start" [name]="(button==3)?'caret-down':'caret-forward'"></ion-icon>
+          <ion-title>IMMOBILE</ion-title>
+        </ion-toolbar>
+      </ion-button>
+      <ion-list *ngIf="button==3">
+        <!--tipologia-->
+        <ion-item>
+          <ion-label position="stacked">Tipologia</ion-label>
+          <ion-select formControlName="type" interface="action-sheet">
+            <ion-select-option *ngFor="let t of typeArray">{{t}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--ristrutturazione-->
+        <ion-item>
+          <ion-label>Da Ristrutturare</ion-label>
+          <ion-toggle formControlName="renovate"></ion-toggle>
+        </ion-item>
+        <!--piano-->
+        <ion-item>
+          <ion-label position="stacked">Piano</ion-label>
+          <ion-select formControlName="floor" interface="action-sheet">
+            <ion-select-option *ngFor="let f of floorArray">{{f}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--piani totali-->
+        <ion-item>
+          <ion-label position="stacked">Piani Totali</ion-label>
+          <ion-input formControlName="floors" type="number" inputmode="numeric"></ion-input><!--guardare se cambia sul telefono-->
+        </ion-item>
+        <ion-label color="danger" *ngIf="step1Form.get('floors').errors">Il valore deve essere minore di 127</ion-label>
+        <!--appartamenti totali-->
+        <ion-item>
+          <ion-label position="stacked">Appartamenti Totali</ion-label>
+          <ion-input formControlName="apartaments" type="number"></ion-input>
+        </ion-item>
+        <ion-label color="danger" *ngIf="step1Form.get('apartaments').errors">Il valore deve essere minore di 127</ion-label>
+        <!--spese condominiali-->
+        <ion-item>
+          <ion-label position="stacked">Spese Condominiali</ion-label>
+          <ion-input formControlName="fees" type="number"></ion-input>
+        </ion-item>
+        <!--anno-->
+        <ion-item>
+          <ion-label position="stacked" type="number">Anno di Costruzione</ion-label>
+          <ion-select formControlName="year" interface="action-sheet">
+            <ion-select-option *ngFor="let y of yearsArray">{{y}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <!--INTERNO-->
+      <ion-button size="large" expand="block" (click)="buttonClick(4)">
+        <ion-toolbar color="primary">
+          <ion-icon slot="start" [name]="(button==4)?'caret-down':'caret-forward'"></ion-icon>
+          <ion-title>INTERNO</ion-title>
+        </ion-toolbar>
+      </ion-button>
+      <ion-list *ngIf="button==4">
+        <!--numero locali-->
+        <ion-item>
+          <ion-label position="stacked">Numero Locali</ion-label>
+          <ion-select formControlName="locals" interface="action-sheet">
+            <ion-select-option *ngFor="let l of localArray">{{l}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--numero camere-->
+        <ion-item>
+          <ion-label position="stacked">Numero Camere</ion-label>
+          <ion-input formControlName="bedrooms" type="number"></ion-input>
+        </ion-item>
+        <ion-label color="danger" *ngIf="step1Form.get('bedrooms').errors">Il valore deve essere minore di 127</ion-label>
+        <!--numero bagni-->
+        <ion-item>
+          <ion-label position="stacked">Numero Bagni</ion-label>
+          <ion-input formControlName="bathrooms" type="number"></ion-input>
+        </ion-item>
+        <ion-label color="danger" *ngIf="step1Form.get('bathrooms').errors">Il valore deve essere minore di 127</ion-label>
+        <!--superficie-->
+        <ion-item>
+          <ion-label position="stacked">Superficie</ion-label>
+          <ion-input formControlName="surface" type="number"></ion-input>
+        </ion-item>
+        <!--balconi-->
+        <ion-item>
+          <ion-label>Balconi</ion-label>
+          <ion-toggle formControlName="balcony"></ion-toggle>
+        </ion-item>
+        <!--terrazzo-->
+        <ion-item>
+          <ion-label>Terrazzo</ion-label>
+          <ion-toggle formControlName="terrace"></ion-toggle>
+        </ion-item>
+      </ion-list>
+      <!--ESTERNO-->
+      <ion-button size="large" expand="block"  (click)="buttonClick(5)">
+        <ion-toolbar color="primary">
+          <ion-icon slot="start" [name]="(button==5)?'caret-down':'caret-forward'"></ion-icon>
+          <ion-title>ESTERNO</ion-title>
+        </ion-toolbar>
+      </ion-button>
+      <ion-list *ngIf="button==5">
+        <!--garage-->
+        <ion-item>
+          <ion-label>Garage</ion-label>
+          <ion-toggle formControlName="garage"></ion-toggle>
+        </ion-item>
+        <!--posti auto-->
+        <ion-item>
+          <ion-label>Posti Auto</ion-label>
+          <ion-toggle formControlName="parking" name="auto"></ion-toggle>
+        </ion-item>
+        <!--cantina-->
+        <ion-item>
+          <ion-label>Cantina</ion-label>
+          <ion-toggle formControlName="cellar"></ion-toggle>
+        </ion-item>
+        <!--giardino-->
+        <ion-item>
+          <ion-label>Giardino</ion-label>
+          <ion-toggle formControlName="garden"></ion-toggle>
+        </ion-item>
+      </ion-list>
+      <!--PREZZO-->
+      <ion-button size="large" expand="block"  (click)="buttonClick(6)">
+        <ion-toolbar color="primary">
+          <ion-icon slot="start" [name]="(button==6)?'caret-down':'caret-forward'"></ion-icon>
+          <ion-title>PREZZO</ion-title>
+        </ion-toolbar>
+      </ion-button>
+      <ion-list *ngIf="button==6">
+        <!--prezzo richiesto-->
+        <ion-item>
+          <ion-label position="stacked">Prezzo Richiesto</ion-label>
+          <ion-input formControlName="price" type="number"></ion-input>
+        </ion-item>
+        <!--prezzo valutato-->
+        <ion-item>
+          <ion-label position="stacked">Prezzo Valutato</ion-label>
+          <ion-input formControlName="estimate" type="number"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+  </form>     
+</ion-content>
+

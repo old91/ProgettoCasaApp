@@ -1,0 +1,39 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Accedi</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="loginForm">
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type="text" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input formControlName="password" type="password" required></ion-input>
+      </ion-item>
+      <ion-label color="danger">{{authMessage}}</ion-label>
+      <ion-item lines="none">
+        <ion-checkbox slot="start" formControlName="keepConnection"></ion-checkbox>
+        <ion-label> Rimani Connesso</ion-label>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block" (click)="auth()">Sign In</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align:right">
+          <ion-label color="primary" [routerLink]="['../reset']" class="underline">Password Dimenticata?</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf = "status=='error'">
+        <ion-label class = "error" color="danger" position = "floating">Credenziali non valide</ion-label>
+      </ion-row>
+      <ion-row *ngIf = "status=='server'">
+        <ion-label class = "error" color="danger" position = "floating">Problemi con il server, riprovare più tardi.</ion-label>
+      </ion-row>
+    </form>
+    L'accesso al proprio account è un servizio riservato ai soli dipendenti dell'agenzia immobiliare.
+  </ion-card-content>
+</ion-card>

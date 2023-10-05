@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ProgettoCasaApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

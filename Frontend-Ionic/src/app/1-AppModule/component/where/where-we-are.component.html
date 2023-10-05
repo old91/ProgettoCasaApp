@@ -1,0 +1,40 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> Contatti</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          Indirizzo:
+          <a (click)="doNavigate()">Via Tripoli, 86, 47923 Rimini(RN)</a>
+        </ion-item>
+        <ion-item>
+          Email: info@progettocasarimini.it
+        </ion-item>
+        <ion-item>
+          Telefono:
+          <a (click)="doCall()">+39 0541-382278</a>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+    <ion-card-title>Orari</ion-card-title>
+    <ion-grid class="ion-margin">
+      <ion-row>
+        <ion-col>Giorno</ion-col>
+        <ion-col>Mattina</ion-col>
+        <ion-col>Pomeriggio</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let day of Orari; index as i">
+        <ion-col style = "font-weight: bold;">{{ day.giorno }}</ion-col>
+        <ion-col *ngIf="day.chiuso === false">{{ day.mattina }}</ion-col>
+        <ion-col *ngIf="day.chiuso === false">{{ day.pomeriggio }}</ion-col>
+        <ion-col *ngIf="!day.chiuso === false">Chiuso</ion-col>
+        <ion-col *ngIf="!day.chiuso === false">Chiuso</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
+  
+      
+  

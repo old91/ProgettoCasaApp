@@ -1,0 +1,32 @@
+<ion-content>
+  <ion-item>
+    <h3>Iserisci le Immagini(step4)</h3>
+  </ion-item>
+  <!--Se ancora non è caricata nessuna immagine mostrare questo titolo-->
+  <h3 *ngIf="images.length == 0" class="ion-padding ion-text-center">Please Select Image!</h3>
+ 
+  <ion-list>
+    <ion-item *ngFor="let file of images; let i = index">
+    <!-- ion-thumbnail sono tag per le minuature, sono componenti quadrati che di solito avvolgono un immagine
+    o un icona, utilizzati spesso per la visualizzazione di un gruppo di immagini -->
+      <ion-thumbnail slot="start">
+        <ion-img [src]="file.data"></ion-img>
+      </ion-thumbnail>
+      <ion-label class="ion-text-wrap">
+        {{ file.name }}
+      </ion-label>
+      <ion-button slot="end" fill="clear" (click)="deleteImage(i)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+ 
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
+      <ion-icon slot="start" name="camera"></ion-icon>
+      Select Image
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

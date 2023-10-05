@@ -1,0 +1,27 @@
+ion-input{
+    --placeholder-opacity: 1 !important;
+    --placeholder-color: #555 !important;
+  }
+
+.black {
+  color: #1c1c1c;
+}
+
+.title {
+  color: rgb(184, 30, 30);
+  font-weight: bold;
+}
+
+.value {
+  color: #1c1c1c;
+  font-weight: bold;
+}
+
+ion-content{
+    --background: #f0f0f0;
+}
+
+ion-button{
+    --background: #1c1c1c;
+    --color: rgb(184,30,30)
+}

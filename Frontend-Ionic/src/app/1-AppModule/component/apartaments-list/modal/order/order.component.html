@@ -1,0 +1,71 @@
+<ion-header translucent>
+  <ion-toolbar class="apply-filter">
+    <ion-buttons slot="end">
+      <ion-button (click)='closeModal()'>Close</ion-button>
+    </ion-buttons>
+    <ion-title class="modal-title">Ordinamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list>
+    <form [formGroup]="orderForm"> 
+      <ion-radio-group formControlName="date">
+        <ion-list-header>
+          <ion-label>Data Annuncio</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Dal Più recente</ion-label>
+          <ion-radio slot="start" value="cre-date"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Dal Meno recente</ion-label>
+          <ion-radio slot="start" value="dec-date"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Indifferente</ion-label>
+          <ion-radio slot="start" value="no-date"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-radio-group formControlName="price">
+        <ion-list-header>
+          <ion-label>Prezzo Immobile</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Dal Più costoso</ion-label>
+          <ion-radio slot="start" value="dec-price"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Dal Meno costoso</ion-label>
+          <ion-radio slot="start" value="cre-price"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Indifferente</ion-label>
+          <ion-radio slot="start" value="no-price"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-radio-group formControlName="surface">
+        <ion-list-header>
+          <ion-label>Superficie Immobile</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Dal Più grande</ion-label>
+          <ion-radio slot="start" value="dec-surface"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Dal Meno grande</ion-label>
+          <ion-radio slot="start" value="cre-surface"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Indifferente</ion-label>
+          <ion-radio slot="start" value="no-surface"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </form>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-button class="apply-filter" expand="block" type="submit" size="large" (click)="Search(orderForm.value)">
+    <ion-label>Applica</ion-label>
+  </ion-button>
+</ion-footer>
+

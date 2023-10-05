@@ -1,0 +1,56 @@
+<!-- ION-MENU -->
+<ion-menu contentId="main-content" type="overlay">
+  <ion-content>
+    <ion-list id="inbox-list">
+      <ion-list-header>{{setTitle()}}</ion-list-header>
+      <ion-note>{{setSubtitle()}}</ion-note>
+      <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+        <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">
+          <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+          <ion-label>{{ p.title }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-item lines="none" detail="false">
+        <ion-icon slot="start" [ios]="'call'+'-outline'" [md]="'call'+'-sharp'"></ion-icon>
+        <ion-label (click)='callUs()'>Chiamaci</ion-label>
+      </ion-item>
+      <div *ngIf="this.auth.isLoggedIn()">
+        <hr color="grey" width="90%">
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of userPages; let i = index">
+          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <div *ngIf = "isAdmin()">
+          <hr color="grey" width="90%">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of adminPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </div>
+        <hr color="grey" width="90%">
+        <ion-menu-toggle auto-hide="false">
+          <ion-item lines="none" (click)="logOutAlert()">
+            <ion-icon slot="start" [ios]="'log-out' + '-outline'" [md]="'log-out' + '-sharp'"></ion-icon>
+            <ion-label>LogOut</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<!-- ION-HEADER-->
+<ion-header *ngIf="!apart.createOn" id="main-content" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-title>Progetto Casa</ion-title> -->
+    <div class="title">
+      <ion-img class="logo" src="assets/logo.png" alt="image" style="width:50%"></ion-img>
+    </div>
+  </ion-toolbar>
+</ion-header>

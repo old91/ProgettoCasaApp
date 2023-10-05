@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-title style="font-weight:bold">Lista Appartamenti</ion-title>
+  </ion-toolbar>
+<ion-card>
+  <ion-card-header>
+    <ion-item lines="none" fill="outline">
+      <ion-label position="stacked">Filtra per Agente</ion-label>
+      <ion-select value="all" interface="popover" (ionChange)="filtering($event)">
+        <ion-select-option value="all">Tutti</ion-select-option>
+        <ion-select-option class="ion-text-wrap" *ngFor ="let u of usersList" value="{{u.ref_user}}">{{u.ref_user}} {{u.surname}} {{u.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list class="list">
+      <ion-item *ngFor="let a of apartamentsList; let i = index">
+        <ion-label  fill="clear">{{a.agent}}-{{a.id}}</ion-label>
+        <ion-label class="ion-text-wrap" fill="clear">{{a.title}}</ion-label>
+        <ion-icon color="danger" slot="end" type="button" name="trash" (click)="deleteAlert(a.id)"></ion-icon>
+        <ion-icon color="primary" slot="end" type="button" name="open" (click)="modifyAlert(a)"></ion-icon>  
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+</ion-content>

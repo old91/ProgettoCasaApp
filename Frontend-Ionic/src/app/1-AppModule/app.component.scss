@@ -1,0 +1,30 @@
+.ion-padding{
+    --background: #f0f0f0;
+}
+
+.spin{
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+ ion-spinner {
+    width: 28px;
+    height: 28px;
+    stroke: #444;
+    fill: #222;
+    transform: scale(2);
+    color: red
+ }
+ .logo{
+     position: fixed;
+     top: 30%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     color: red;
+     font-weight: bolder;
+ }
+ #preload{
+     --background: black;
+ }
+ 

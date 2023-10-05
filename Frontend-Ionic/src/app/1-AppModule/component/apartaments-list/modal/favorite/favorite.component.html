@@ -1,0 +1,25 @@
+<ion-header translucent>
+  <ion-toolbar class="apply-filter">
+    <ion-buttons slot="end">
+      <ion-button (click)='closeModal()'>Close</ion-button>
+    </ion-buttons>
+    <ion-title class="modal-title">Lista Filtri</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list *ngFor="let a of filterList; let i = index">
+    <ion-item>
+      <ion-icon color="primary" name="eye" (click)="getDetail(i)"></ion-icon>
+      <ion-title style="text-align:center" (click)="search(i)"> {{(a[1])?a[1][1]:'senza nome '+(i+1)}}</ion-title>
+      <ion-icon color="danger" name="trash" (click)="deleteAlert(i)"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf = 'showDetail == i+1'>
+      <ion-list>
+        <ion-chip *ngFor="let e of a[0]" color="tertiary">
+          <ion-label>{{e[0]}} {{e[1]}}</ion-label>
+        </ion-chip>
+      </ion-list>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

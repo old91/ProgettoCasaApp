@@ -1,0 +1,29 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title style="text-align:center">Registrazione Device</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label>
+      Il device da cui ti stai connettendo non è associato al tuo account, 
+      per motivi di sicurezza ti invitiamo a registrarlo inserendo il codice cha ti 
+      abbiamo inviato per email.
+    </ion-label>    
+      <form [formGroup]="resetForm" (submit)="postDevice(resetForm.value)">
+        <ion-item lines="none">Device: {{deviceName}}</ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating" required>Codice di Registrazione</ion-label>
+          <ion-input formControlName="password" type="string" required></ion-input>
+        </ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-button [disabled]="resetForm.invalid" type="submit" expand="block">Conferma Registrazione</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label color="primary" (click)="getRequest()">Rinvia il codice</ion-label>
+          </ion-col>
+        </ion-row>
+      </form>
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-toolbar color="none">
+    <ion-title class="title">Inserisci Appartamento</ion-title>
+  </ion-toolbar>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Incompleti</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngIf="drafts.length==0" class="list">
+        <ion-item style="text-align: center;">
+          <ion-label>Nessun appartamento da completare</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list *ngIf="drafts.length!=0" class="list">
+        <ion-item *ngFor="let d of drafts; let i = index">
+          <!-- <ion-label type="button" class="ion-text-wrap">{{(d.title)?d.title:'Senza Titolo'}}</ion-label> -->
+          <ion-button class="ion-text-wrap" fill="clear" (click)="setDraft(d)">{{(d.title)?d.title:'Senza Titolo'}}</ion-button>
+          <!-- <ion-icon slot="start" name="reader"></ion-icon> -->
+          <ion-icon color="danger" slot="end" type="button" name="trash" (click)="deleteAlert(d.id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" (click)="createStart()">Aggiungi Nuovo</ion-button>
+</ion-content>

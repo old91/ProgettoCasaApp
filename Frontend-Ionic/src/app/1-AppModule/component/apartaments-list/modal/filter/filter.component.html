@@ -1,0 +1,119 @@
+<ion-header translucent>
+  <ion-toolbar class="apply-filter">
+    <ion-buttons slot="end">
+      <ion-button (click)='closeModal()'>Close</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)='resetForm()'>Reset</ion-button>
+    </ion-buttons>
+    <ion-title class="modal-title">Filtri</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <form [formGroup]="filtersForm">
+  <ion-list>
+      <ion-item>
+        <ion-label>Città</ion-label>
+        <ion-select multiple formControlName="city">
+          <ion-select-option>Rimini</ion-select-option>
+          <ion-select-option>Riccione</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Zona</ion-label>
+        <ion-select multiple formControlName="macro">
+          <ion-select-option>San Giuliano</ion-select-option>
+          <ion-select-option>Fontanelle</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tipo Costruzione</ion-label>
+        <ion-select multiple formControlName="type">
+          <ion-select-option>Appartamento</ion-select-option>
+          <ion-select-option>Appartamento a Schiera</ion-select-option>
+          <ion-select-option>Casa Abbinata</ion-select-option>
+          <ion-select-option>Casa Singola</ion-select-option>
+          <ion-select-option>Rustico</ion-select-option>
+          <ion-select-option>Villette a Schiera</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Numero Locali</ion-label>
+        <ion-select multiple formControlName="locals">
+          <!-- ho messo solo i tipi di locali più comuni -->
+          <ion-select-option>Monolocale</ion-select-option>
+          <ion-select-option>Bilocale</ion-select-option>
+          <ion-select-option>Trilocale</ion-select-option>
+          <ion-select-option>Quadrilocale</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Piano</ion-label>
+        <ion-select multiple formControlName="floor">
+          <!-- non ho messo i numeri dei piani -->
+          <ion-select-option>Piano Terra</ion-select-option>
+          <ion-select-option>Piano Rialzato</ion-select-option>
+          <ion-select-option>Ultimo Piano</ion-select-option>
+          <ion-select-option>Attico</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bagni</ion-label>
+        <ion-select multiple formControlName="bathrooms">
+          <ion-select-option>1</ion-select-option>
+          <ion-select-option>2</ion-select-option>
+          <ion-select-option>3</ion-select-option>
+          <ion-select-option>3+</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Camere da Letto</ion-label>
+        <ion-select multiple formControlName="bedrooms">
+          <ion-select-option>1</ion-select-option>
+          <ion-select-option>2</ion-select-option>
+          <ion-select-option>3</ion-select-option>
+          <ion-select-option>4</ion-select-option>
+          <ion-select-option>4+</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Superficie</ion-label>
+        <ion-range id="surface-range" formControlName="surface" dual-knobs pin step="10" max="150" (ionChange)="setSurfaceRange($event)">
+          <ion-label slot="start">{{minSurface}}</ion-label>
+          <ion-label slot="end">{{maxSurface}}</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Prezzo</ion-label>
+        <ion-range id="price-range" formControlName="price" dual-knobs pin step="10" max="800" (ionChange)="setPriceRange($event)">
+          <ion-label slot="start">{{minPrice}}</ion-label>
+          <ion-label slot="end">{{maxPrice}}</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label>Garage</ion-label>
+        <ion-toggle formControlName="garage"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Posti Auto</ion-label>
+        <ion-toggle formControlName="parking"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Giardino</ion-label>
+        <ion-toggle formControlName="garden"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cantina</ion-label>
+        <ion-toggle formControlName="cellar"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Da Ristrutturare</ion-label>
+        <ion-toggle formControlName="renovate"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </form>
+  </ion-content>
+
+<ion-footer>
+  <ion-button class="apply-filter" expand="block" type="submit" (click)="Search(filtersForm.value)">Applica</ion-button>
+</ion-footer>

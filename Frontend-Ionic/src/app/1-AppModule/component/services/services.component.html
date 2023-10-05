@@ -1,0 +1,33 @@
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>I Nostri Servizi</ion-card-title>
+      <ion-card-subtitle>
+        Tutti i servizi da noi offerti nascono da un’esperienza maturata negli anni , 
+        cercando di assitere il nostro cliente a 360°, risolvendo tutte le piccole esigenze insorte in seguito all’acquisto immobiliare.
+        Il nostro traguardo è la soddisfazione del cliente . La nostra professione viene fatta con tanta passione e professionalità in quanto 
+        crediamo in quello che facciamo. Ci avvaliamo di un Team di professionisti dei vari settori indicati scrupolosamente inidviduati e 
+        selezionati da noi stesso.  Attraverso Progetto Casa potete usufruire dei servizi dei nostri professionisti avendo uno sconto del 10% .
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row *ngFor = "let p of rows">
+          <ion-col>
+            <ion-title>
+              <ion-icon [ios]= "columns[p].icon" [md]= "columns[p].icon"></ion-icon>
+            </ion-title>
+            <ion-label>{{columns[p].title}}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-title>
+              <ion-icon [ios]= "columns[p+1].icon" [md]= "columns[p+1].icon"></ion-icon>
+            </ion-title>
+            <ion-label>{{columns[p+1].title}}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

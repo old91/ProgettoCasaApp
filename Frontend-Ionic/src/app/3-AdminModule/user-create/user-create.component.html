@@ -1,0 +1,38 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Aggiungi Utente</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="createUserForm" (ngSubmit)="createUser(createUserForm.value)">
+      <ion-item lines="full">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+    
+      <ion-item lines="full">
+        <ion-label position="floating">Cognome</ion-label>
+        <ion-input type="text" formControlName="surname"></ion-input>
+      </ion-item>
+    
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Ruolo</ion-label>
+        <ion-select  interface = "ion-popover" formControlName="role">
+          <ion-select-option value="admin">Admin</ion-select-option>
+          <ion-select-option value="vendor">Venditore</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button [disabled]="createUserForm.invalid" type="submit" expand="block">Create</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card-content>
+</ion-card>
+
+  

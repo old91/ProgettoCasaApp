@@ -1,0 +1,84 @@
+<ion-content>
+  <!-- ion fab -->
+  <ion-content #content>
+    <ion-fab class="ion-fab" #fab horizontal="center" vertical="center" slot="fixed">
+      <ion-fab-button color="dark" #fabbtn>
+        <ion-icon name="settings" id="primary"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button (click)="openFilterModal()">
+          <ion-icon name = "funnel"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+      <ion-fab-list side="buttom">
+        <ion-fab-button (click)="openOrderModal()">
+          <ion-icon name = "filter"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+      <ion-fab-list side="end">
+        <ion-fab-button (click)="openFavoriteModal()">
+          <ion-icon name = "list"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+      <ion-fab-list side="start">
+        <ion-fab-button (click)="addFilterFavorite()">
+          <ion-icon name = "heart"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  <!-- skeleton -->
+  <div id="skeleton" *ngIf="!data">
+    <ion-card *ngFor="let n of [1,2,3,4]">
+      <ion-item>
+        <ion-label>
+          <ion-skeleton-text animated style="width: 90%; height: 20px;margin-left: 5%"></ion-skeleton-text>
+          <div class="image">
+            <ion-skeleton-text></ion-skeleton-text>
+          </div>  
+          <ion-item lines="none">
+            <ion-label slot="start">
+              <ion-skeleton-text animated style="width: 100%; height: 30px;"></ion-skeleton-text>
+            </ion-label>
+            <ion-label slot="end">
+              <ion-skeleton-text animated style="width: 40px; height: 30px"></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+  <!-- visualizzatore filtri -->
+  <div style="margin:10px" *ngIf="activeFilter">
+    <ion-item  class="item-text-wrap">
+      <ion-label slot="start">Filtro Attivo ({{getResult()}})</ion-label>
+      <ion-label slot="end" color="danger" (click)="resetFilter()">Rimuovi</ion-label> 
+    </ion-item>
+  </div>
+   <!-- lista appartamenti -->
+  <div *ngIf = "apartamentsList.length !=0">
+    <div style="margin-bottom:10px" *ngFor="let a of setList()">
+      <ion-item class="element" lines="full" detail="false" button="true" (click)="openApartament(a.id)">
+        <ion-label>
+          <ion-label class="title">{{a.title}}</ion-label>
+          <ion-img *ngIf="a.media.length==0" class="image" src="assets/nopics.png"></ion-img>
+          <swiper *ngIf="a.media.lenght!=0">
+            <ng-template *ngFor = "let image of a.media, let i = index" swiperSlide>     
+              <ion-img class="image" [src]="image.data"></ion-img>
+            </ng-template>
+          </swiper>
+        </ion-label>
+      </ion-item>
+      <ion-item  style="margin-top:1px" class="price" lines="none">
+        <ion-label slot="start"> {{a.price | number:'1.0'}} €</ion-label>
+        <ion-label slot="end">
+            <ion-icon class="icon-fav" [name]="getIcon(a.id)" (click)="setFavorite(a.id)"></ion-icon>
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+  <div *ngIf = "apartamentsList.length == 0 && data == true" class="no-apartaments">
+    <ion-label *ngIf = "!activeFilter">Al momento non sono disponibili appartamenti in vendita</ion-label>
+    <ion-label *ngIf = "activeFilter">La Ricerca non ha prodotto risultati</ion-label>
+  </div>
+</ion-content>
+

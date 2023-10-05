@@ -1,0 +1,19 @@
+Applicazione creata interamente da me per un possibile uso di un agenzia immobiliare.
+Obbiettivi:
+	- mostrare ai clienti gli appartamenti in vendita
+	- dare l'opportunità ai clienti di salvare filtri, e monitorare gli appartamenti preferiti
+	- dare l'opportunità ai dipendenti di postare e modificare gli appartamenti direttamente dall'app
+
+L'applicazione lavora in front-end grazia ad un progetto Ionic(basato su Angular) mentre la comunicazione back-end viene eseguita tramite
+chiamate RestApi utilizzando un progetto Laravel.
+
+Per eseguire l'applicazione web in runtime su broswer è necessario:
+- connettersi a MySql.
+- accedere all'indirizzo localhost/phpmyadmin e creare un database nominato "progetto_casa".
+- All'interno della cartella Backend eseguire da terminale il comando "php artisan serve" (assicurasi che si connetta alla porta 8000).
+- Sempre nella cartella Backend eseguire da terminale il comando "php artisan migrate".
+- All'interno della cartella Frontend eseguire da terminale il comando "ionic serve".
+
+Per accedere all'account inserire le credenziali:
+- Email: montevecchi.stefano@gmail.com
+- Password: 1234

@@ -1,0 +1,11 @@
+<!--ION TABS-->
+<ion-footer *ngIf="!apart.createOn">
+  <ion-segment class="normal-mode" *ngIf="!apart.createOn" value="favorite" mode="md" swipGesture="true">
+    <ion-segment-button [ngClass]="isChecked('/home')" value="appartaments" routerLink="/home" routerLinkActive="segment-button-cheked !important">
+      <ion-icon name="home"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button [ngClass]="isChecked('/favorite')" value="preferiti" routerLink="/favorite">
+      <ion-icon name="heart"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-footer>

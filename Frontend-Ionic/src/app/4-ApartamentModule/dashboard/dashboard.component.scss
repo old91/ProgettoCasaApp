@@ -1,0 +1,56 @@
+
+ion-footer{
+    ion-segment{
+        --background: linear-gradient(270deg,DodgerBlue 0%, white 50%, DodgerBlue 100%);
+    }
+}
+ion-header{
+    ion-segment{
+        --background: linear-gradient(270deg,green 0%, white 50%, DarkRed 100%);
+    }
+}
+.create-footer{
+    --background: white;
+    ion-segment-button{
+        --background-checked: DodgerBlue;
+        --background:var(--background-checked);
+        --color: white;
+        --color-checked:var(--color);
+        --indicator-color: DodgerBlue;
+        --border-color:var(--color);
+    }
+    ion-segment-button:first-child{
+        margin-right: 1px;
+    }
+    ion-label{
+        font-weight: bold;
+    }
+}
+:root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 22px;
+}
+.create-header{
+    ion-segment-button{
+        --background:var(--background-checked);
+        --color: white;
+        --color-checked:var(--color);
+        --border-color:var(--color);
+    }
+    ion-segment-button:first-child{
+        margin-right: 1px;
+    }
+    ion-label{
+        font-weight: bold;
+    }
+  }
+  .delete{
+    --background: DarkRed !important;
+    --background-checked: DarkRed;
+    --indicator-color: DarkRed;
+  }
+  .save{
+    --background-checked: green;
+    --background: green !important;
+    --indicator-color: green;
+  }

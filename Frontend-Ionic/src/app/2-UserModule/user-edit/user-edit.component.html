@@ -1,0 +1,61 @@
+<ion-card *ngIf = "typeOfChange == 'device'">
+  <ion-card-header>
+    <ion-card-title class="black">Gestione Device</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor = "let d of devices">
+        <ion-label>{{d.name}}</ion-label>
+        <ion-icon name="trash" color="danger" (click)="deviceAlert(d.id)"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+<ion-card *ngIf = "typeOfChange == 'email'">
+  <ion-card-header>
+    <ion-card-title class="black"> Modifica Email</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="emailForm">
+      <ion-list>
+        <ion-item >
+          <ion-label position="floating">Inserisci Nuova Email</ion-label>
+          <ion-input type= "email" formControlName='email' (ionBlur) = "control = (emailForm.get('email').errors)? true:false"></ion-input>
+        </ion-item>
+        <div *ngIf="control">Email non valida</div>
+        <ion-item>
+          <ion-label position="floating">Inserisci Password</ion-label>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-card-content>
+  <ion-button expand="block" [disabled]="emailForm.invalid" (click)="auth()">Conferma</ion-button>
+</ion-card>
+<ion-card *ngIf = "typeOfChange == 'password'">
+  <ion-card-header>
+    <ion-card-title class="black"> Modifica Password</ion-card-title>
+    <ion-label>La password deve contenere almeno 6 caratteri, tra cui uno speciale(!@#$%^&) e uno maiuscolo.</ion-label>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="pswForm">
+        <ion-list>
+        <ion-item>
+          <ion-label position="floating">Inserisci Vecchia Password</ion-label>
+          <ion-input type="password" formControlName = "password"></ion-input>
+        </ion-item>
+        <ion-item >
+          <ion-label position="floating">Inserisci Nuova Password</ion-label>
+          <ion-input type="password" formControlName="newPassword"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Conferma Password</ion-label>
+          <ion-input type="password" formControlName="confirmPassword" (ionBlur) = "control = passwordMatchControl()" ></ion-input>
+        </ion-item>
+        <ion-label  color="danger" *ngIf="control">Le password non coincidono</ion-label>
+      </ion-list>
+    </form>
+  </ion-card-content>
+  <ion-button expand="block" [disabled]="pswForm.invalid" (click)="auth()">Conferma</ion-button>
+</ion-card>
+
